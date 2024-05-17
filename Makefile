@@ -3,42 +3,42 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tmontani <tmontani@student.42lausanne.c    +#+  +:+       +#+         #
+#    By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/03 10:02:07 by tmontani          #+#    #+#              #
-#    Updated: 2024/05/03 13:40:02 by tmontani         ###   ########.fr        #
+#    Updated: 2024/05/17 14:58:41 by tmontani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
-SRC = $(addprefix src/, main.c)
-GNL_SRC = $(addprefix gnl/, get_next_line.c get_next_line_utils.c)
-PRINTF_SRC = $(addprefix ft_printf/, ft_printf.c ft_printf_utils.c)
-OBJ := $(SRC:%.c=%.o)
-GNL_OBJ := $(GNL_SRC:%.c=%.o)
-PRINTF_OBJ := $(PRINTF_SRC:%.c=%.o)
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -g -I./map_parsing -I./image_related
+SRC =    main.c map_parser.c map_utils.c libft.c
 
-CCFLAGS = -Wextra -Wall -Werror
+
+OBJECTS = $(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME):$(OBJ) $(GNL_OBJ) $(PRINTF_OBJ)
-	gcc $(CCFLAGS) $^ -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+libmlx.a:
+	$(MAKE) -C mlx
 
-debug: $(OBJ) $(GNL_OBJ) $(PRINTF_OBJ)
-	gcc $(CCFLAGS) -fsanitize=address $^ -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+libftprintf.a:
+	$(MAKE) -C ft_printf
 
-%.o: %.c
-	gcc $(CCFLAGS) -Imlx -Iincludes -c $< -o $@
+$(NAME): $(OBJECTS)
+	$(CC) $(OBJECTS) -Lft_printf -lftprintf -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+
+%.o : %.c
+	$(CC) $(CFLAGS) -Iminilibx -c $< -o $@
 
 clean:
-	rm -f $(OBJ) $(GNL_OBJ) $(PRINTF_OBJ)
+	rm -f $(NAME) $(OBJECTS)
 
 fclean: clean
-	make clean -C mlx/
 	rm -f $(NAME)
 
-mlx:
-	@$(MAKE) re -C mlx/
-
 re: fclean all
+
+.PHONY: all clean fclean re
+

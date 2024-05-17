@@ -6,57 +6,58 @@
 /*   By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:19:50 by tmontani          #+#    #+#             */
-/*   Updated: 2024/05/14 16:23:54 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/05/17 15:05:41 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	map_parser(map map_info)
+void	map_check_errors(map *map_info)
 {
 	if (!check_rectangular_map(map_info))
+	{
 		printf("error map not rectangular\n");
+		return ;
+	}
 	if(!check_walls(map_info))
+	{
 		printf("map not enclosed in walls\n");
-	
-	
-	//checker les erreurs de map
-	//creer un algo qui determine si la map est faisable
+		return ;
+	}
 }
 
-char *ft_get_next_line(int fd)
+void	ft_get_next_line(int fd, map *map_info)
 {
-	
 	int	bytes_read;
 	char *buf;
-	
-	buf = (char *)malloc(sizeof(char) * (1000));
+	buf = (char *)malloc(sizeof(char) * (5000));
 	if (!buf)
+		return ;
+	bytes_read = read(fd, buf, 5000);
+	if (bytes_read < 0)
 	{
 		free(buf);
-		return (NULL);
+		return ;
 	}
-	bytes_read = read(fd, buf, 1000);
-	return (buf);
+	map_info->map_array = ft_split(buf, '\n');
+	if (!map_info->map_array)
+	{
+		free(map_info->map_array);
+		return ;
+	}
+	
 }
 
 int	main(void)
 {
 	int	fd;
-	char	*stash;
 	map	map_info;
 	
 	fd = open("map.ber", O_RDONLY);
 	if (fd == -1)
-	{
 		printf("error open or file doesn't exist\n ");
-	}
-	stash = ft_get_next_line(fd);
-	if (!stash)
-	{
-		printf("error no map\n");
-	}
-	printf("stash:\n%s", stash);
-	map_info.my_map = ft_split(stash, '\n');
-	map_parser(map_info);
+	ft_get_next_line(fd, &map_info);
+	map_check_errors(&map_info);
+	map_parser(&map_info);
+	map_algo(&map_info);
 }

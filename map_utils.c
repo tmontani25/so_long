@@ -6,7 +6,7 @@
 /*   By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 14:02:14 by tmontani          #+#    #+#             */
-/*   Updated: 2024/05/14 16:16:01 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/05/17 13:49:20 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ int check_lines(char *str)
 	}
 	return (1);
 }
-int check_walls(map map_info)
+
+int check_walls(map *map_info)
 {
 	int	x;
 	int	y;
@@ -50,18 +51,19 @@ int check_walls(map map_info)
 	lines = 0;
 	y = 0;
 	x = 0;
-	if (!check_lines(map_info.my_map[0]))
+	if (!check_lines(map_info->map_array[0]))
 		return (0);
-	while (map_info.my_map[lines])
+	while (map_info->map_array[lines])
 		lines++;
 	lines = lines - 1;
-	if (!check_lines(map_info.my_map[lines]))
+	if (!check_lines(map_info->map_array[lines]))
 		return (0);
-	if (!check_col(map_info.my_map))
+	if (!check_col(map_info->map_array))
 		return (0);
 	return (1);
 }
-int	check_rectangular_map(map map_info)
+
+int	check_rectangular_map(map *map_info)
 {
 	int	len;
 	int	lines;
@@ -69,10 +71,10 @@ int	check_rectangular_map(map map_info)
 
 	current_len = 0;
 	lines = 0;
-	len = ft_strlen(map_info.my_map[0]);
-	while (map_info.my_map[lines])
+	len = ft_strlen(map_info->map_array[0]);
+	while (map_info->map_array[lines])
 	{
-		current_len = ft_strlen(map_info.my_map[lines]);
+		current_len = ft_strlen(map_info->map_array[lines]);
 		if (len != current_len)
 			return (0);
 		lines++;
