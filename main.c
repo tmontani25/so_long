@@ -6,7 +6,7 @@
 /*   By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:19:50 by tmontani          #+#    #+#             */
-/*   Updated: 2024/05/17 15:05:41 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/05/21 15:36:22 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int	main(void)
 {
 	int	fd;
 	map	map_info;
+	// int x = 0;
+	int y = 0;
 	
 	fd = open("map.ber", O_RDONLY);
 	if (fd == -1)
@@ -59,5 +61,18 @@ int	main(void)
 	ft_get_next_line(fd, &map_info);
 	map_check_errors(&map_info);
 	map_parser(&map_info);
+	map_copy(&map_info);
+	
+	while (map_info.map_cpy[y])
+	{
+		// x = 0;
+		// while (map_info.map_cpy[y][x])
+		// {
+		// 	printf("%c", map_info.map_cpy[y][x]);
+		// 	x++;
+		// }
+		// printf("%s\n", map_info.map_cpy[y]);
+		// y++;
+	}
 	map_algo(&map_info);
 }

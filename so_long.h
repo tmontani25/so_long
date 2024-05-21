@@ -6,7 +6,7 @@
 /*   By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:23:22 by tmontani          #+#    #+#             */
-/*   Updated: 2024/05/17 15:33:50 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/05/21 15:15:05 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct map
 	int	len_x;
 	int len_y;
 	char	**map_array;
+	char	**map_cpy;
 	bool	visited;
 	
 } map;
@@ -38,5 +39,7 @@ char	**ft_split(char const *str, char sep);
 int	check_rectangular_map(map *map_info);
 int check_walls(map *map_info);
 void	map_parser(map *map_info);
+void	map_copy(map *map_info);
+int map_algo(map *map_info);
 
 #endif
