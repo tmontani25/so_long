@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tmontani <tmontani@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 14:02:14 by tmontani          #+#    #+#             */
-/*   Updated: 2024/05/17 13:49:20 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/05/22 12:19:02 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,9 @@ int check_lines(char *str)
 
 int check_walls(map *map_info)
 {
-	int	x;
-	int	y;
 	int	lines;
 
 	lines = 0;
-	y = 0;
-	x = 0;
 	if (!check_lines(map_info->map_array[0]))
 		return (0);
 	while (map_info->map_array[lines])

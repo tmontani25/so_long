@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_algo.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tmontani <tmontani@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:29:41 by tmontani          #+#    #+#             */
-/*   Updated: 2024/05/21 15:31:59 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/05/22 12:36:57 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,17 @@ void	map_copy(map *map_info)
 	map_info->map_cpy = map_cpy;
 }
 
-// int map_algo(map *map_info)
-// {
-// 	static int  coins_count;
-// 	static int  exit_count;
+int map_algo(map *map_info)
+{
+	static int  coins_count;
+	static int  exit_count;
 	
 	
 	//verifier si la position a deja ete visitee
-		//faire une copie de la map et une fonction qui change les chiffres en 1 si la case a etee visitee
+	//fonction qui change les chiffres en 1 si la case a etee visitee
 	//si sortie atteinte ok
 	//si coins coins++
 	//si position innacessible return
 	//si non marque comme visitee
 	//explore les 4 directions possibles avec appel recursif
-//}
+}
