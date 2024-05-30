@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmontani <tmontani@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:19:50 by tmontani          #+#    #+#             */
-/*   Updated: 2024/05/22 12:33:53 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/05/24 15:41:31 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,18 @@ int	main(int argc, char **argv)
 	
 	if (argc != 2)
 	{
-		printf("wrong nb of arguments");
+		write(2, "wrong nb of arguments", 21);
 		return (0);
 	}
 	else
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
-		printf("error open or file doesn't exist\n ");
+		write(2, "error open or file doesn't exist\n", 33);
 	ft_get_next_line(fd, &map_info);
 	map_check_errors(&map_info);
 	map_parser(&map_info);
-	map_copy(&map_info);
-	map_algo(&map_info);
+	map_info.map_cpy = map_copy(&map_info);
+	if (!map_algo(&map_info, map_info.player_y, map_info.player_x))
+		return (write(2, "map impossible\n", 15));
 }
 

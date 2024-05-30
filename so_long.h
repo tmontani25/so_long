@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmontani <tmontani@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:23:22 by tmontani          #+#    #+#             */
-/*   Updated: 2024/05/22 12:29:01 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/05/24 10:34:03 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ typedef struct map
 	
 } map;
 
-int ft_strlen(char *str);
+int		ft_strlen(char *str);
 char	**ft_split(char const *str, char sep);
-int	check_rectangular_map(map *map_info);
-int check_walls(map *map_info);
+int		check_rectangular_map(map *map_info);
+int		check_walls(map *map_info);
 void	map_parser(map *map_info);
-void	map_copy(map *map_info);
-int map_algo(map *map_info);
+char	**map_copy(map *map_info);
+int		map_algo(map *map_info, int y, int x);
 
 #endif
