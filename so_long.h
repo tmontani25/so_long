@@ -6,7 +6,7 @@
 /*   By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:23:22 by tmontani          #+#    #+#             */
-/*   Updated: 2024/05/24 10:34:03 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/06/04 16:12:34 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdbool.h>
+# include "./mlx/mlx.h"
 
 typedef struct map
 {
@@ -31,6 +32,8 @@ typedef struct map
 	char	**map_array;
 	char	**map_cpy;
 	bool	visited;
+	void	*mlx;
+	void	*window;
 	
 } map;
 
@@ -41,5 +44,6 @@ int		check_walls(map *map_info);
 void	map_parser(map *map_info);
 char	**map_copy(map *map_info);
 int		map_algo(map *map_info, int y, int x);
+int		window_innit(map *map_info);
 
 #endif
