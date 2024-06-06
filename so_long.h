@@ -6,7 +6,7 @@
 /*   By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:23:22 by tmontani          #+#    #+#             */
-/*   Updated: 2024/06/06 16:04:41 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/06/06 17:01:40 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,5 @@ void	map_parser(map *map_info);
 char	**map_copy(map *map_info);
 int		map_algo(map *map_info, int y, int x);
 void	mlx_start(map *map_info);
-int		mlx_test120(int keycode, void *param);
+int		mlx_key_handler(int keycode, void *param);
 #endif
