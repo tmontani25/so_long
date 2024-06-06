@@ -6,7 +6,7 @@
 /*   By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:23:22 by tmontani          #+#    #+#             */
-/*   Updated: 2024/06/04 16:12:34 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/06/06 14:13:50 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 
 typedef struct map
 {
+	void	*mlx;
+	void	*window;
 	int	player_x;
 	int player_y;
 	int	coins;
@@ -32,9 +34,7 @@ typedef struct map
 	char	**map_array;
 	char	**map_cpy;
 	bool	visited;
-	void	*mlx;
-	void	*window;
-	
+
 } map;
 
 int		ft_strlen(char *str);
@@ -44,6 +44,5 @@ int		check_walls(map *map_info);
 void	map_parser(map *map_info);
 char	**map_copy(map *map_info);
 int		map_algo(map *map_info, int y, int x);
-int		window_innit(map *map_info);
-
+void	mlx_start(map *map_info);
 #endif

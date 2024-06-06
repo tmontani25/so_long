@@ -6,7 +6,7 @@
 /*   By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:19:50 by tmontani          #+#    #+#             */
-/*   Updated: 2024/06/04 16:03:31 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/06/06 14:14:06 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,6 @@ int	main(int argc, char **argv)
 	if (!map_algo(&map_info, map_info.player_y, map_info.player_x))
 		return (write(2, "map impossible\n", 15));
 		puts("jdjdj");
-	window_innit(&map_info);
+	mlx_start(&map_info);
 }
 
