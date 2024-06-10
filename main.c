@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tmontani <tmontani@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:19:50 by tmontani          #+#    #+#             */
-/*   Updated: 2024/06/06 14:14:06 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/06/10 15:34:41 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,29 +53,22 @@ int	main(int argc, char **argv)
 	int	fd;
 	map	map_info;
 	
-	puts("kdkdkdk");
+	map_info.window_should_close = false;
 	if (argc != 2)
 	{
 		write(2, "wrong nb of arguments", 21);
 		return (0);
 	}
 	else
-	puts("jejejejejej");
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 		write(2, "error open or file doesn't exist\n", 33);
-	puts("kdkd9ie");
 	ft_get_next_line(fd, &map_info);
-	puts("jfirrrr");
 	map_check_errors(&map_info);
-	puts("zzzz");
 	map_parser(&map_info);
-	puts("xxxxxxx");
 	map_info.map_cpy = map_copy(&map_info);
-	puts("hello");
 	if (!map_algo(&map_info, map_info.player_y, map_info.player_x))
 		return (write(2, "map impossible\n", 15));
-		puts("jdjdj");
 	mlx_start(&map_info);
 }
 

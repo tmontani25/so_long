@@ -6,7 +6,7 @@
 /*   By: tmontani <tmontani@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:23:22 by tmontani          #+#    #+#             */
-/*   Updated: 2024/06/07 14:44:24 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/06/10 15:03:51 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct map
 	int	exit;
 	int	len_x;
 	int len_y;
+	bool	window_should_close;
 	char	**map_array;
 	char	**map_cpy;
 	bool	visited;
@@ -46,4 +47,5 @@ char	**map_copy(map *map_info);
 int		map_algo(map *map_info, int y, int x);
 void	mlx_start(map *map_info);
 int		mlx_key_handler(int keycode, void *param);
+int		close_handler(void *param);
 #endif
