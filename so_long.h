@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmontani <tmontani@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:23:22 by tmontani          #+#    #+#             */
-/*   Updated: 2024/06/10 15:03:51 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/06/11 14:10:48 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ void	map_parser(map *map_info);
 char	**map_copy(map *map_info);
 int		map_algo(map *map_info, int y, int x);
 void	mlx_start(map *map_info);
-int		mlx_key_handler(int keycode, void *param);
-int		close_handler(void *param);
+int		mlx_key_handler(int keycode, map *map_info);
+int		close_handler(map *map_info);
 #endif
