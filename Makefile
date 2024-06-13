@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tmontani <tmontani@student.42lausanne.c    +#+  +:+       +#+         #
+#    By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/03 10:02:07 by tmontani          #+#    #+#              #
-#    Updated: 2024/06/07 14:43:27 by tmontani         ###   ########.fr        #
+#    Updated: 2024/06/11 17:43:50 by tmontani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
