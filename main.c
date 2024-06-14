@@ -6,7 +6,7 @@
 /*   By: tmontani <tmontani@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:19:50 by tmontani          #+#    #+#             */
-/*   Updated: 2024/06/10 15:34:41 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/06/14 18:19:29 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ void	map_check_errors(map *map_info)
 	if (!check_rectangular_map(map_info))
 	{
 		printf("error map not rectangular\n");
-		return ;
+		exit(0);
 	}
 	if(!check_walls(map_info))
 	{
 		printf("map not enclosed in walls\n");
-		return ;
+		exit(0);
 	}
 }
 
@@ -69,6 +69,7 @@ int	main(int argc, char **argv)
 	map_info.map_cpy = map_copy(&map_info);
 	if (!map_algo(&map_info, map_info.player_y, map_info.player_x))
 		return (write(2, "map impossible\n", 15));
+	
 	mlx_start(&map_info);
 }
 

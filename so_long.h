@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tmontani <tmontani@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:23:22 by tmontani          #+#    #+#             */
-/*   Updated: 2024/06/11 14:10:48 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/06/14 17:35:05 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,16 @@
 # include <stdbool.h>
 # include "./mlx/mlx.h"
 
+
 typedef struct map
 {
 	void	*mlx;
 	void	*window;
+	void	*ground_img;
+	void	*wall_img;
+	void	*player_img;
+	void	*exit_img;
+	void	*coin_img;
 	int	player_x;
 	int player_y;
 	int	coins;
@@ -48,4 +54,5 @@ int		map_algo(map *map_info, int y, int x);
 void	mlx_start(map *map_info);
 int		mlx_key_handler(int keycode, map *map_info);
 int		close_handler(map *map_info);
+void	render_game(map *map_info);
 #endif

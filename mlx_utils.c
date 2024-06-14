@@ -3,14 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tmontani <tmontani@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 14:58:15 by tmontani          #+#    #+#             */
-/*   Updated: 2024/06/11 14:09:32 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/06/14 18:02:41 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void render_game(map *map_info)
+{
+    int y;
+    int x;
+
+    x = 0;
+    y = 0;
+    while (y < map_info->len_y)
+    {
+        x = 0;
+        while (x < map_info->len_x)
+        {
+            if (map_info->map_array[y][x] == '0')
+                mlx_put_image_to_window(map_info->mlx, map_info->window, map_info->ground_img, x * 32, y * 32);
+            if (map_info->map_array[y][x] == '1')
+                mlx_put_image_to_window(map_info->mlx, map_info->window, map_info->wall_img, x * 32, y * 32);
+            if (map_info->map_array[y][x] == 'C')
+                mlx_put_image_to_window(map_info->mlx, map_info->window, map_info->coin_img, x * 32, y * 32);
+            if (map_info->map_array[y][x] == 'P')
+                mlx_put_image_to_window(map_info->mlx, map_info->window, map_info->player_img, x * 32, y * 32);
+            if (map_info->map_array[y][x] == 'E')
+                mlx_put_image_to_window(map_info->mlx, map_info->window, map_info->exit_img, x * 32, y * 32);
+            x++;
+        }
+        y++;
+    }
+}
+
 
 int mlx_key_handler(int keycode, map *map_info)
 {
@@ -28,7 +57,7 @@ int mlx_key_handler(int keycode, map *map_info)
     if (keycode == 2 ) // 'D'
         map_info->player_x += 1;
 
-    //render_game(map_info); // Mettre à jour le rendu après chaque mouvement
+    render_game(map_info); // Mettre à jour le rendu après chaque mouvement
     return (0);
 }
 
