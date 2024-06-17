@@ -6,7 +6,7 @@
 /*   By: tmontani <tmontani@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:23:22 by tmontani          #+#    #+#             */
-/*   Updated: 2024/06/14 17:35:05 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/06/17 15:55:11 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct map
 	int	player_x;
 	int player_y;
 	int	coins;
+	int	c_count;
 	int	exit;
 	int	len_x;
 	int len_y;
@@ -55,4 +56,8 @@ void	mlx_start(map *map_info);
 int		mlx_key_handler(int keycode, map *map_info);
 int		close_handler(map *map_info);
 void	render_game(map *map_info);
+void    move_up(map *map_info);
+void    move_down(map *map_info);
+void    move_left(map *map_info);
+void	move_right(map *map_info);
 #endif

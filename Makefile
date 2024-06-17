@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+         #
+#    By: tmontani <tmontani@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/03 10:02:07 by tmontani          #+#    #+#              #
-#    Updated: 2024/06/11 17:43:50 by tmontani         ###   ########.fr        #
+#    Updated: 2024/06/17 15:21:22 by tmontani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g -I./map_parsing -I./image_related
-SRC =    main.c map_parser.c map_utils.c libft.c map_algo.c mlx_init.c mlx_utils.c
+SRC =    main.c map_parser.c map_utils.c libft.c map_algo.c mlx_init.c mlx_utils.c moves.c
 
 
 OBJECTS = $(SRC:.c=.o)
