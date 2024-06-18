@@ -6,7 +6,7 @@
 /*   By: tmontani <tmontani@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:23:22 by tmontani          #+#    #+#             */
-/*   Updated: 2024/06/18 08:38:18 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/06/18 15:15:06 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include "./mlx/mlx.h"
+# include "ft_printf/ft_printf.h"
 
 
 typedef struct map
@@ -38,6 +39,9 @@ typedef struct map
 	int	len_x;
 	int len_y;
 	int c_count;
+	int	moves;
+	int	exit_x;
+	int exit_y;
 	bool	window_should_close;
 	char	**map_array;
 	char	**map_cpy;

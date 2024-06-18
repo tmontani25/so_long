@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: teo18 <tmontani@student.42lausanne.ch>     +#+  +:+       +#+        */
+/*   By: tmontani <tmontani@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:59:48 by tmontani          #+#    #+#             */
-/*   Updated: 2023/12/03 00:04:39 by teo18            ###   ########.fr       */
+/*   Updated: 2024/06/18 14:19:26 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_strlen(char *str)
+int ft_strlen2(char *str)
 {
 	int	i;
 
@@ -119,7 +119,7 @@ char *ft_itoa_hex(unsigned int nb, int len, char X_or_x)
 	}
 	str[i] = '\0';
 	i = 0;
-	len = ft_strlen(str) - 1;
+	len = ft_strlen2(str) - 1;
 	while(i < len)
 	{
 		temp = str[i];
