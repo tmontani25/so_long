@@ -6,7 +6,7 @@
 /*   By: tmontani <tmontani@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:23:22 by tmontani          #+#    #+#             */
-/*   Updated: 2024/06/17 16:42:32 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/06/18 08:15:42 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ typedef struct map
 	int	player_x;
 	int player_y;
 	int	coins;
-	int	c_count;
 	int	exit;
 	int	len_x;
 	int len_y;

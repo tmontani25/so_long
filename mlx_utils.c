@@ -6,7 +6,7 @@
 /*   By: tmontani <tmontani@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 14:58:15 by tmontani          #+#    #+#             */
-/*   Updated: 2024/06/17 15:56:19 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/06/18 08:26:36 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,11 @@ int mlx_key_handler(int keycode, map *map_info)
             close_handler(map_info);
     }
     if (keycode == 13) // 'W'
-      move_up(map_info);
+        move_up(map_info);
     if (keycode == 1) // 'S'
         move_down(map_info);
     if (keycode == 0) // 'A'
-       move_left(map_info);
+        move_left(map_info);
     if (keycode == 2 ) // 'D'
         move_right(map_info);
 
