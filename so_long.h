@@ -6,7 +6,7 @@
 /*   By: tmontani <tmontani@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:23:22 by tmontani          #+#    #+#             */
-/*   Updated: 2024/06/18 08:15:42 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/06/18 08:38:18 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct map
 	int	exit;
 	int	len_x;
 	int len_y;
+	int c_count;
 	bool	window_should_close;
 	char	**map_array;
 	char	**map_cpy;
