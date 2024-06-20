@@ -6,49 +6,46 @@
 /*   By: tmontani <tmontani@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 13:44:47 by tmontani          #+#    #+#             */
-/*   Updated: 2024/06/18 14:15:12 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/06/20 13:25:59 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int check_type(const char type, void *arg)
+int	check_type(const char type, void *arg)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    if (type == 'c' || type == '%')
-    {
-        if (type == 'c')
-            i += ft_putchar(*((char *)arg));
-        else if (type == '%')
-            i += ft_putchar('%');
-    }
-        
-    if (type == 's')
-        i += ft_putstr((char *)arg);
-     if (type == 'p')
-        ft_handle_ptr((void*)(arg));
-    if (type == 'd' || type == 'i')
-        i += ft_handle_int((int)(intptr_t)arg);
-    if (type == 'u')
-        i += ft_handle_uint((unsigned int)(intptr_t)arg);
-    if (type == 'x' || type == 'X')
-        i += ft_handle_hex(*(unsigned int *)arg, type);
-
-    return (i);
+	i = 0;
+	if (type == 'c' || type == '%')
+	{
+		if (type == 'c')
+			i += ft_putchar(*((char *)arg));
+		else if (type == '%')
+			i += ft_putchar('%');
+	}
+	if (type == 's')
+		i += ft_putstr((char *)arg);
+	if (type == 'p')
+		ft_handle_ptr((void *)(arg));
+	if (type == 'd' || type == 'i')
+		i += ft_handle_int((int)(intptr_t)arg);
+	if (type == 'u')
+		i += ft_handle_uint((unsigned int)(intptr_t)arg);
+	if (type == 'x' || type == 'X')
+		i += ft_handle_hex(*(unsigned int *)arg, type);
+	return (i);
 }
 
 int	ft_printf(const char *str, ...)
 {
 	va_list	args;
-	va_start(args, str);
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
- 
 	i = 0;
 	j = 0;
+	va_start(args, str);
 	while (str[i] != '\0')
 	{
 		if (str[i] == '%')

@@ -6,7 +6,7 @@
 /*   By: tmontani <tmontani@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 15:32:53 by tmontani          #+#    #+#             */
-/*   Updated: 2024/06/14 18:15:52 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/06/20 13:05:20 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	mlx_start(map *map_info)
 {
-	int img_width;
-	int img_height;
+	int	img_width;
+	int	img_height;
 	
 	map_info->mlx = mlx_init();
 	map_info->window = mlx_new_window(map_info->mlx, map_info->len_x * 32, map_info->len_y * 32, "so_long");

@@ -6,7 +6,7 @@
 /*   By: tmontani <tmontani@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:29:41 by tmontani          #+#    #+#             */
-/*   Updated: 2024/06/06 17:11:09 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/06/20 13:04:35 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	**map_copy(map *map_info)
 {
-	char **map_cpy;
-	int x;
-	int y;
+	char	**map_cpy;
+	int		x;
+	int		y;
 
 	y = -1;
 	map_cpy = (char **)malloc(sizeof(char *) * (map_info->len_y));
@@ -34,11 +34,10 @@ char	**map_copy(map *map_info)
 	return (map_cpy);
 }
 
-int map_algo(map *map_info, int y, int x)
+int	map_algo(map *map_info, int y, int x)
 {
-	static int  coins_count = 0;
-	static int  exit = 0;
-	
+	static int	coins_count = 0;
+	static int	exit = 0;
 	if (x < 0 || x > map_info->len_x || y < 0 || y > map_info->len_y)
 		return (0);
 	if (map_info->map_cpy[y][x] == '1')

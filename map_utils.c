@@ -6,15 +6,27 @@
 /*   By: tmontani <tmontani@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 14:02:14 by tmontani          #+#    #+#             */
-/*   Updated: 2024/05/22 12:19:02 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/06/20 13:14:28 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		i++;
+	}
+	return (i);
+}
+
 int	check_col(char **map)
 {
-	int lines;
+	int	lines;
 	int	len;
 	
 	len = ft_strlen(map[0]) - 1;
@@ -28,7 +40,7 @@ int	check_col(char **map)
 	return (1);
 }
 
-int check_lines(char *str)
+int	check_lines(char *str)
 {
 	int	i;
 
@@ -42,7 +54,7 @@ int check_lines(char *str)
 	return (1);
 }
 
-int check_walls(map *map_info)
+int	check_walls(map *map_info)
 {
 	int	lines;
 
@@ -77,6 +89,3 @@ int	check_rectangular_map(map *map_info)
 	}
 	return (1);
 }
-	// calculer la longueur de la premiere ligne 
-	// si toutes les lignes font la meme taille alors return 1
-	//si une ligne a une longueur differente alors return 0

@@ -6,13 +6,13 @@
 /*   By: tmontani <tmontani@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:59:48 by tmontani          #+#    #+#             */
-/*   Updated: 2024/06/18 14:19:26 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/06/20 13:28:37 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_strlen2(char *str)
+int	ft_strlen2(char *str)
 {
 	int	i;
 
@@ -21,33 +21,34 @@ int ft_strlen2(char *str)
 		i++;
 	return (i);
 }
-int    ft_putchar(char c)
-{
-    write(1, &c, 1);
-    return (1);
-}
-int ft_putstr(char *str)
-{
-    int i;
 
-    i = 0;
+int	ft_putchar(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
+int	ft_putstr(char *str)
+{
+	int	i;
+
+	i = 0;
 	if (!str)
 	{
 		write(1, "(null)", 6);
 		return (6);
 	}
-    while(str[i])
-    {
-        ft_putchar(str[i]);
-        i++;
-    }
-    return (i);
+	while (str[i])
+	{
+		ft_putchar(str[i]);
+		i++;
+	}
+	return (i);
 }
 
 int	ft_handle_uint(unsigned int n)
 {
-    if (n < 0)
-        n = n * (-1);
+	if (n < 0)
+		n = n * (-1);
 	if (n >= 10)
 		return (ft_handle_uint(n / 10) + ft_putchar(n % 10 + '0'));
 	return (ft_putchar(n + '0'));
@@ -75,9 +76,9 @@ int	ft_handle_int(unsigned int n)
 	return (len);
 }
 
-int ft_lenght_hex(unsigned int nb)
+int	ft_lenght_hex(unsigned int nb)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (nb > 0)
@@ -89,13 +90,13 @@ int ft_lenght_hex(unsigned int nb)
 	return (len);
 }
 
-char *ft_itoa_hex(unsigned int nb, int len, char X_or_x)
+char	*ft_itoa_hex(unsigned int nb, int len, char X_or_x)
 {
-	char *str;
-	char hexa_upper[] = "0123456789ABCDEF";
-	char hexa_lower[] = "0123456789abcdef";
-	int	i;
-	char temp;
+	char	*str;
+	char	hexa_upper[] = "0123456789ABCDEF";
+	char	hexa_lower[] = "0123456789abcdef";
+	int		i;
+	char	temp;
 
 	i = 0;
 	str = (char *)malloc(sizeof(char) * len + 1);
@@ -123,10 +124,10 @@ char *ft_itoa_hex(unsigned int nb, int len, char X_or_x)
 	while(i < len)
 	{
 		temp = str[i];
-        str[i] = str[len];
-        str[len] = temp;
-        i++;
-        len--;
+		str[i] = str[len];
+		str[len] = temp;
+		i++;
+		len--;
 	}
 	return (str);
 }
