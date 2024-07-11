@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmontani <tmontani@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:19:50 by tmontani          #+#    #+#             */
-/*   Updated: 2024/06/20 13:15:55 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/07/11 14:40:49 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ int	main(int argc, char **argv)
 
 	map_info.window_should_close = false;
 	map_info.c_count = 0;
+	map_info.len_y = 0;
+	map_info.len_x = 0;
+	map_info.moves = 0;
 	if (argc != 2)
 	{
 		ft_printf("wrong nb of arguments\n");

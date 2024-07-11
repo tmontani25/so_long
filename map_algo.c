@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_algo.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmontani <tmontani@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:29:41 by tmontani          #+#    #+#             */
-/*   Updated: 2024/06/20 13:04:35 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/07/11 14:35:50 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ char	**map_copy(map *map_info)
 		while (++x < map_info->len_x)
 			map_cpy[y][x] = map_info->map_array[y][x];
 	}
+	
 	return (map_cpy);
 }
 
