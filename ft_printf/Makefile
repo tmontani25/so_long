@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: teo18 <tmontani@student.42lausanne.ch>     +#+  +:+       +#+         #
+#    By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 14:14:14 by tmontani          #+#    #+#              #
-#    Updated: 2023/12/03 00:04:44 by teo18            ###   ########.fr        #
+#    Updated: 2023/12/04 20:10:03 by tmontani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,8 @@ CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
 SRCS =	ft_printf_utils.c \
 		ft_printf.c \
+		ft_printf_utils1.c \
+		ft_printf_utils2.c \
 		
 OBJS = $(SRCS:.c=.o)
 

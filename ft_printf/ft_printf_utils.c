@@ -6,78 +6,79 @@
 /*   By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:59:48 by tmontani          #+#    #+#             */
-/*   Updated: 2024/07/11 16:47:34 by tmontani         ###   ########.fr       */
+/*   Updated: 2023/12/04 20:11:06 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_strlen2(char *str)
+int	ft_putstr_nreverse(char *str)
 {
 	int	i;
+	int	j;
+
+	j = 0;
+	i = ft_strlen(str) - 1;
+	while (i >= 0)
+	{
+		j += write(1, &str[i], 1);
+		i--;
+	}
+	return (j);
+}
+
+char	*fill_hex_str(char *str, unsigned long nb, char X_or_x)
+{
+	char	*hex_upper;
+	char	*hex_lower;
+	int		i;
 
 	i = 0;
-	while (str[i])
+	hex_lower = "0123456789abcdef";
+	hex_upper = "0123456789ABCDEF";
+	while (nb > 0)
+	{
+		if (X_or_x == 'x')
+		{
+			str[i] = hex_lower[nb % 16];
+		nb /= 16;
 		i++;
-	return (i);
+		}
+		else if (X_or_x == 'X')
+		{
+			str[i] = hex_upper[nb % 16];
+		nb /= 16;
+		i++;
+		}
+		str[i] = '\0';
+	}
+	return (str);
 }
 
-int	ft_putchar(char c)
+int	ft_itoa_hex(unsigned long nb, char X_or_x)
 {
-	write(1, &c, 1);
-	return (1);
-}
+	char	*str;
+	char	*hexa_upper;
+	char	*hexa_lower;
+	int		i;
+	int		j;
 
-int	ft_putstr(char *str)
-{
-	int	i;
-
+	hexa_lower = "0123456789abcdef";
+	hexa_upper = "0123456789ABCDEF";
 	i = 0;
+	j = 0;
+	if (nb == 0)
+		return (write(1, "0", 1));
+	str = (char *)malloc(sizeof(char) * 17);
 	if (!str)
-	{
-		write(1, "(null)", 6);
-		return (6);
-	}
-	while (str[i])
-	{
-		ft_putchar(str[i]);
-		i++;
-	}
-	return (i);
+		return (0);
+	str = fill_hex_str(str, nb, X_or_x);
+	j += ft_putstr_nreverse(str);
+	free(str);
+	return (j);
 }
 
-int	ft_handle_uint(unsigned int n)
-{
-	if (n < 0)
-		n = n * (-1);
-	if (n >= 10)
-		return (ft_handle_uint(n / 10) + ft_putchar(n % 10 + '0'));
-	return (ft_putchar(n + '0'));
-}
-
-int	ft_handle_int(unsigned int n)
-{
-	unsigned int	nbr;
-	int				len;
-
-	len = 0;
-	if (n < 0)
-	{
-		len += ft_putchar('-');
-		nbr = -n;
-	}
-	else
-		nbr = n;
-	if (nbr >= 10)
-	{
-		len += ft_handle_int(nbr / 10);
-		nbr %= 10;
-	}
-	len += ft_putchar(nbr + '0');
-	return (len);
-}
-
-int	ft_lenght_hex(unsigned int nb)
+int	ft_lenght_hex(unsigned long nb)
 {
 	int	len;
 
@@ -91,85 +92,15 @@ int	ft_lenght_hex(unsigned int nb)
 	return (len);
 }
 
-char	*ft_itoa_hex(unsigned int nb, int len, char X_or_x)
-{
-	char	*str;
-	char	hexa_upper[] = "0123456789ABCDEF";
-	char	hexa_lower[] = "0123456789abcdef";
-	int		i;
-	char	temp;
-
-	i = 0;
-	str = (char *)malloc(sizeof(char) * len + 1);
-	if (!str)
-		return (NULL);
-
-	while (nb > 0)
-	{
-		if (X_or_x == 'X')
-		{
-			str[i] = hexa_upper[nb % 16];
-			nb = nb / 16;
-			i++;
-		}
-		else if (X_or_x == 'x')
-		{
-			str[i] = hexa_lower[nb % 16];
-			nb = nb / 16;
-			i++;
-		}
-	}
-	str[i] = '\0';
-	i = 0;
-	len = ft_strlen2(str) - 1;
-	while(i < len)
-	{
-		temp = str[i];
-		str[i] = str[len];
-		str[len] = temp;
-		i++;
-		len--;
-	}
-	return (str);
-}
-
-int ft_handle_hex(unsigned int nb, char X_or_x)
-{
-	int len;
-
-	len = ft_lenght_hex(nb);
-	ft_itoa_hex(nb, len, X_or_x);
-	return (len);
-}
-
-int	ft_putnbr_hex(unsigned long long ptr)
-{
-	int len;
-	char hex[] = "012456789abcdef";
-
-	len = 0;
-	if (ptr >= 16)
-		len += ft_putnbr_hex(ptr / 16);
-	len +=  ft_putchar(hex[ptr % 16]);
-	return (len);
-}
-
-int	ft_handle_ptr(void *ptr)
+int	ft_handle_hex(unsigned int nb, char X_or_x)
 {
 	int	len;
+	int	j;
 
-	len = 0;
-	if (ptr)
-	{
-		ft_putstr("my adresse 0x");
-		len = ft_putnbr_hex((unsigned long long)ptr);
-		len = len + 2;
-		return (len);
-	}
-	else
-		ft_putstr("0x0");
-		len = len + 3;
-	return (len);
+	j = 0;
+	len = ft_lenght_hex(nb);
+	j += ft_itoa_hex(nb, X_or_x);
+	return (j);
 }
 /*int main(void)
 {

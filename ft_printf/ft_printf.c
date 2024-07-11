@@ -3,37 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmontani <tmontani@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 13:44:47 by tmontani          #+#    #+#             */
-/*   Updated: 2024/06/20 13:25:59 by tmontani         ###   ########.fr       */
+/*   Updated: 2023/12/04 20:11:04 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	check_type(const char type, void *arg)
+int	check_type(char type, void *arg)
 {
 	int	i;
 
 	i = 0;
-	if (type == 'c' || type == '%')
-	{
-		if (type == 'c')
-			i += ft_putchar(*((char *)arg));
-		else if (type == '%')
-			i += ft_putchar('%');
-	}
-	if (type == 's')
-		i += ft_putstr((char *)arg);
-	if (type == 'p')
-		ft_handle_ptr((void *)(arg));
-	if (type == 'd' || type == 'i')
-		i += ft_handle_int((int)(intptr_t)arg);
-	if (type == 'u')
-		i += ft_handle_uint((unsigned int)(intptr_t)arg);
-	if (type == 'x' || type == 'X')
-		i += ft_handle_hex(*(unsigned int *)arg, type);
+	if (type == 'c')
+		i += ft_putchar((char)arg);
+	else if (type == 's')
+			i += ft_putstr((char *)arg);
+	else if (type == 'p')
+			i += ft_handle_ptr((void *)(arg));
+	else if (type == 'd' || type == 'i')
+			i += ft_handle_int((int)arg);
+	else if (type == 'u')
+			i += ft_handle_uint((unsigned int)(arg));
+	else if (type == 'x' || type == 'X')
+			i += ft_handle_hex((unsigned int)(arg), type);
 	return (i);
 }
 
@@ -43,21 +38,21 @@ int	ft_printf(const char *str, ...)
 	int		i;
 	int		j;
 
+	va_start(args, str);
 	i = 0;
 	j = 0;
-	va_start(args, str);
 	while (str[i] != '\0')
 	{
 		if (str[i] == '%')
 		{
 			i++;
-			j += check_type(str[i], va_arg(args, void *));
+			if (str[i] == '%')
+				j += write(1, "%", 1);
+			else
+				j += check_type(str[i], va_arg(args, void *));
 		}
 		else
-		{
-			write (1, &str[i], 1);
-			j++;
-		}
+			j += write(1, &str[i], 1);
 		i++;
 	}
 	va_end(args);
@@ -65,14 +60,13 @@ int	ft_printf(const char *str, ...)
 }
 /*int main (void)
 {
-	char c;
-	char *ptr;
+	int c;
+
 	int nb_char_printed;
 
-	c = 'a';
-	ptr = &c;
- nb_char_printed = ft_printf("adresse de c: %p", ptr);
+	c = 1234;
+ nb_char_printed = ft_printf("%p", "");
 	printf("\n\n");
-	printf("nombre de char imprime: %d", nb_char_printed);
+	printf("nombre de char imprime: %p", "");
 	return (0);
 }*/
