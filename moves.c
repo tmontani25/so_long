@@ -6,13 +6,13 @@
 /*   By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 15:07:36 by tmontani          #+#    #+#             */
-/*   Updated: 2024/07/11 14:40:00 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/07/11 16:07:10 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void    move_up(map *map_info)
+void	move_up(t_map *map_info)
 {
 	if (map_info->map_array[map_info->player_y - 1][map_info->player_x] == '1')
 		return ;
@@ -30,9 +30,9 @@ void    move_up(map *map_info)
 	map_info->map_array[map_info->player_y][map_info->player_x] = '0';
 	map_info->player_y = map_info->player_y - 1;
 	map_info->map_array[map_info->player_y][map_info->player_x] = 'P';
-
 }
-void    move_down(map *map_info)
+
+void	move_down(t_map *map_info)
 {
 	if (map_info->map_array[map_info->player_y + 1][map_info->player_x] == '1')
 		return ;
@@ -52,7 +52,8 @@ void    move_down(map *map_info)
 	map_info->map_array[map_info->player_y][map_info->player_x] = 'P';
 	map_info->moves++;
 }
-void    move_left(map *map_info)
+
+void	move_left(t_map *map_info)
 {
 	if (map_info->map_array[map_info->player_y][map_info->player_x - 1] == '1')
 		return ;
@@ -70,10 +71,9 @@ void    move_left(map *map_info)
 	map_info->map_array[map_info->player_y][map_info->player_x] = '0';
 	map_info->player_x = map_info->player_x - 1;
 	map_info->map_array[map_info->player_y][map_info->player_x] = 'P';
-
 }
 
-void move_right(map *map_info)
+void	move_right(t_map *map_info)
 {
 	if (map_info->map_array[map_info->player_y][map_info->player_x + 1] == '1')
 		return ;

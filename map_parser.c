@@ -6,13 +6,13 @@
 /*   By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 14:42:05 by tmontani          #+#    #+#             */
-/*   Updated: 2024/07/11 14:42:03 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/07/11 16:03:11 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	find_player_y(map *map_info)
+void	find_player_y(t_map *map_info)
 {
 	int	lines;
 	int	x;
@@ -57,7 +57,7 @@ int	ft_strchr_array(char **array, char c)
 	return (count);
 }
 
-void	map_parser(map *map_info)
+void	map_parser(t_map *map_info)
 {
 	while (map_info->map_array[map_info->len_y])
 		map_info->len_y++;

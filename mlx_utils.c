@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmontani <tmontani@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 14:58:15 by tmontani          #+#    #+#             */
-/*   Updated: 2024/06/20 13:06:05 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/07/11 16:31:01 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	put_background(map *map_info)
+void	put_background(t_map *map_info)
 {
 	int	y;
 	int	x;
@@ -25,22 +25,24 @@ void	put_background(map *map_info)
 		while (x < map_info->len_x)
 		{
 			if (map_info->map_array[y][x] == '1')
-				mlx_put_image_to_window(map_info->mlx, map_info->window, map_info->wall_img, x * 32, y * 32);
+				mlx_put_image_to_window(map_info->mlx, map_info->window,
+					map_info->wall_img, x * 32, y * 32);
 			else
-				mlx_put_image_to_window(map_info->mlx, map_info->window, map_info->ground_img, x * 32, y * 32);
+				mlx_put_image_to_window(map_info->mlx, map_info->window,
+					map_info->ground_img, x * 32, y * 32);
 			x++;
 		}
 		y++;
 	}
-
 }
-void render_game(map *map_info)
+
+void	render_game(t_map *map_info)
 {
-	int y;
-	int x;
+	int	y;
+	int	x;
 
 	x = 0;
-	y = - 1;
+	y = -1;
 	put_background(map_info);
 	while (++y < map_info->len_y)
 	{
@@ -48,25 +50,29 @@ void render_game(map *map_info)
 		while (++x < map_info->len_x)
 		{
 			if (map_info->map_array[y][x] == 'C')
-				mlx_put_image_to_window(map_info->mlx, map_info->window, map_info->coin_img, x * 32, y * 32);
+				mlx_put_image_to_window(map_info->mlx, map_info->window,
+					map_info->coin_img, x * 32, y * 32);
 			if (map_info->map_array[y][x] == 'P')
-				mlx_put_image_to_window(map_info->mlx, map_info->window, map_info->player_img, x * 32, y * 32);
+				mlx_put_image_to_window(map_info->mlx, map_info->window,
+					map_info->player_img, x * 32, y * 32);
 			if (map_info->map_array[y][x] == 'E')
 			{
 				if (map_info->c_count == map_info->coins)
-					mlx_put_image_to_window(map_info->mlx, map_info->window, map_info->exit_img, x * 32, y * 32);
+					mlx_put_image_to_window(map_info->mlx, map_info->window,
+						map_info->exit_img, x * 32, y * 32);
 				else
-					mlx_put_image_to_window(map_info->mlx, map_info->window, map_info->ground_img, x * 32, y * 32);
+					mlx_put_image_to_window(map_info->mlx, map_info->window,
+						map_info->ground_img, x * 32, y * 32);
 			}
 		}
 	}
 }
 
-int mlx_key_handler(int keycode, map *map_info)
+int	mlx_key_handler(int keycode, t_map *map_info)
 {
 	if (keycode == 53)
 	{
-		if (map_info->mlx && map_info->window) 
+		if (map_info->mlx && map_info->window)
 			close_handler(map_info);
 	}
 	if (keycode == 13)
@@ -75,7 +81,7 @@ int mlx_key_handler(int keycode, map *map_info)
 		move_down(map_info);
 	if (keycode == 0)
 		move_left(map_info);
-	if (keycode == 2 )
+	if (keycode == 2)
 		move_right(map_info);
 	if (map_info->c_count == map_info->coins)
 		map_info->map_array[map_info->exit_y][map_info->exit_x] = 'E';
@@ -83,10 +89,9 @@ int mlx_key_handler(int keycode, map *map_info)
 	return (0);
 }
 
-int close_handler(map *map_info)
+int	close_handler(t_map *map_info)
 {
-	
-	if(map_info->window && map_info->mlx)
+	if (map_info->window && map_info->mlx)
 	{
 		mlx_destroy_window(map_info->mlx, map_info->window);
 		free(map_info->map_array);

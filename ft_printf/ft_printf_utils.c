@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmontani <tmontani@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:59:48 by tmontani          #+#    #+#             */
-/*   Updated: 2024/06/20 14:51:36 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/07/11 16:47:34 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	ft_putchar(char c)
 	write(1, &c, 1);
 	return (1);
 }
+
 int	ft_putstr(char *str)
 {
 	int	i;
@@ -102,7 +103,7 @@ char	*ft_itoa_hex(unsigned int nb, int len, char X_or_x)
 	str = (char *)malloc(sizeof(char) * len + 1);
 	if (!str)
 		return (NULL);
-	
+
 	while (nb > 0)
 	{
 		if (X_or_x == 'X')
@@ -155,8 +156,8 @@ int	ft_putnbr_hex(unsigned long long ptr)
 
 int	ft_handle_ptr(void *ptr)
 {
-	int len;
-	
+	int	len;
+
 	len = 0;
 	if (ptr)
 	{

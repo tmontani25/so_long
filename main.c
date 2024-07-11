@@ -6,13 +6,13 @@
 /*   By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:19:50 by tmontani          #+#    #+#             */
-/*   Updated: 2024/07/11 14:40:49 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/07/11 16:42:57 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	map_check_errors(map *map_info)
+void	map_check_errors(t_map *map_info)
 {
 	if (!check_rectangular_map(map_info))
 	{
@@ -26,7 +26,7 @@ void	map_check_errors(map *map_info)
 	}
 }
 
-void	ft_get_next_line(int fd, map *map_info)
+void	ft_get_next_line(int fd, t_map *map_info)
 {
 	int		bytes_read;
 	char	*buf;
@@ -50,8 +50,8 @@ void	ft_get_next_line(int fd, map *map_info)
 
 int	main(int argc, char **argv)
 {
-	int	fd;
-	map	map_info;
+	int		fd;
+	t_map	map_info;
 
 	map_info.window_should_close = false;
 	map_info.c_count = 0;

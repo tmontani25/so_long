@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmontani <tmontani@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:23:22 by tmontani          #+#    #+#             */
-/*   Updated: 2024/06/20 13:06:55 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/07/11 16:19:33 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@
 # include "./mlx/mlx.h"
 # include "ft_printf/ft_printf.h"
 
-
-typedef struct map
+typedef struct t_map
 {
 	void	*mlx;
 	void	*window;
@@ -32,36 +31,36 @@ typedef struct map
 	void	*player_img;
 	void	*exit_img;
 	void	*coin_img;
-	int	player_x;
-	int player_y;
-	int	coins;
-	int	exit;
-	int	len_x;
-	int len_y;
-	int c_count;
-	int	moves;
-	int	exit_x;
-	int exit_y;
+	int		player_x;
+	int		player_y;
+	int		coins;
+	int		exit;
+	int		len_x;
+	int		len_y;
+	int		c_count;
+	int		moves;
+	int		exit_x;
+	int		exit_y;
 	bool	window_should_close;
 	char	**map_array;
 	char	**map_cpy;
 	bool	visited;
 
-} map;
+}	t_map;
 
 int		ft_strlen(char *str);
 char	**ft_split(char const *str, char sep);
-int		check_rectangular_map(map *map_info);
-int		check_walls(map *map_info);
-void	map_parser(map *map_info);
-char	**map_copy(map *map_info);
-int		map_algo(map *map_info, int y, int x);
-void	mlx_start(map *map_info);
-int		mlx_key_handler(int keycode, map *map_info);
-int		close_handler(map *map_info);
-void	render_game(map *map_info);
-void    move_up(map *map_info);
-void    move_down(map *map_info);
-void    move_left(map *map_info);
-void	move_right(map *map_info);
+int		check_rectangular_map(t_map *map_info);
+int		check_walls(t_map *map_info);
+void	map_parser(t_map *map_info);
+char	**map_copy(t_map *map_info);
+int		map_algo(t_map *map_info, int y, int x);
+void	mlx_start(t_map *map_info);
+int		mlx_key_handler(int keycode, t_map *map_info);
+int		close_handler(t_map *map_info);
+void	render_game(t_map *map_info);
+void	move_up(t_map *map_info);
+void	move_down(t_map *map_info);
+void	move_left(t_map *map_info);
+void	move_right(t_map *map_info);
 #endif

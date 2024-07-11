@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmontani <tmontani@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 14:02:14 by tmontani          #+#    #+#             */
-/*   Updated: 2024/06/20 13:14:28 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/07/11 16:38:47 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	check_col(char **map)
 {
 	int	lines;
 	int	len;
-	
+
 	len = ft_strlen(map[0]) - 1;
 	lines = 0;
 	while (map[lines])
@@ -54,7 +54,7 @@ int	check_lines(char *str)
 	return (1);
 }
 
-int	check_walls(map *map_info)
+int	check_walls(t_map *map_info)
 {
 	int	lines;
 
@@ -71,7 +71,7 @@ int	check_walls(map *map_info)
 	return (1);
 }
 
-int	check_rectangular_map(map *map_info)
+int	check_rectangular_map(t_map *map_info)
 {
 	int	len;
 	int	lines;
