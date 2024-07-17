@@ -6,7 +6,7 @@
 /*   By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 14:58:15 by tmontani          #+#    #+#             */
-/*   Updated: 2024/07/11 17:38:47 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/07/17 15:46:06 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,15 @@ void	render_game(t_map *map_info)
 		while (++x < map_info->len_x)
 		{
 			if (map_info->map_array[y][x] == 'C')
-				mlx_put_image_to_window(map_info->mlx, map_info->window,
-					map_info->coin_img, x * 32, y * 32);
+				render_coins(map_info, x, y);
 			if (map_info->map_array[y][x] == 'P')
-				mlx_put_image_to_window(map_info->mlx, map_info->window,
-					map_info->player_img, x * 32, y * 32);
+				render_player(map_info, x, y);
 			if (map_info->map_array[y][x] == 'E')
 			{
 				if (map_info->c_count == map_info->coins)
-					mlx_put_image_to_window(map_info->mlx, map_info->window,
-						map_info->exit_img, x * 32, y * 32);
+					render_exit(map_info, x, y);
 				else
-					mlx_put_image_to_window(map_info->mlx, map_info->window,
-						map_info->ground_img, x * 32, y * 32);
+					render_ground(map_info, x, y);
 			}
 		}
 	}
