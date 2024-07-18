@@ -6,7 +6,7 @@
 /*   By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:23:22 by tmontani          #+#    #+#             */
-/*   Updated: 2024/07/17 15:47:19 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/07/18 14:16:32 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,5 @@ void	render_coins(t_map *map_info, int x, int y);
 void	render_player(t_map *map_info, int x, int y);
 void	render_exit(t_map *map_info, int x, int y);
 void	render_ground(t_map *map_info, int x, int y);
+void	free_map(t_map *map_info);
 #endif

@@ -6,11 +6,31 @@
 /*   By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:19:50 by tmontani          #+#    #+#             */
-/*   Updated: 2024/07/11 16:42:57 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/07/18 14:26:53 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	free_map(t_map *map_info)
+{
+	int	y;
+
+	y = -1;
+	if (map_info->map_cpy)
+	{
+		while (++y < map_info->len_y)
+			free (map_info->map_cpy[y]);
+		free (map_info->map_cpy);
+	}
+	y = -1;
+	if (map_info->map_array)
+	{
+		while (++y < map_info->len_y)
+			free (map_info->map_array[y]);
+		free (map_info->map_array);
+	}
+}
 
 void	map_check_errors(t_map *map_info)
 {
@@ -46,6 +66,7 @@ void	ft_get_next_line(int fd, t_map *map_info)
 		free(map_info->map_array);
 		return ;
 	}
+	free(buf);
 }
 
 int	main(int argc, char **argv)

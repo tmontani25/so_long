@@ -6,7 +6,7 @@
 /*   By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 15:07:36 by tmontani          #+#    #+#             */
-/*   Updated: 2024/07/11 16:07:10 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/07/18 14:28:27 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,11 @@ void	move_up(t_map *map_info)
 		map_info->c_count++;
 	if (map_info->map_array[map_info->player_y - 1][map_info->player_x] == 'E')
 	{
-		map_info->exit_y = map_info->player_y - 1;
-		map_info->exit_x = map_info->player_x;
 		if (map_info->c_count == map_info->coins)
+		{
+			free_map (map_info);
 			exit(0);
+		}
 	}
 	map_info->map_array[map_info->player_y][map_info->player_x] = '0';
 	map_info->player_y = map_info->player_y - 1;
@@ -42,10 +43,11 @@ void	move_down(t_map *map_info)
 		map_info->c_count += 1;
 	if (map_info->map_array[map_info->player_y + 1][map_info->player_x] == 'E')
 	{
-		map_info->exit_y = map_info->player_y + 1;
-		map_info->exit_x = map_info->player_x;
 		if (map_info->c_count == map_info->coins)
+		{
+			free_map (map_info);
 			exit(0);
+		}
 	}
 	map_info->map_array[map_info->player_y][map_info->player_x] = '0';
 	map_info->player_y = map_info->player_y + 1;
@@ -63,10 +65,11 @@ void	move_left(t_map *map_info)
 		map_info->c_count += 1;
 	if (map_info->map_array[map_info->player_y][map_info->player_x - 1] == 'E')
 	{
-		map_info->exit_y = map_info->player_y;
-		map_info->exit_x = map_info->player_x - 1;
 		if (map_info->c_count == map_info->coins)
+		{
+			free_map (map_info);
 			exit(0);
+		}
 	}
 	map_info->map_array[map_info->player_y][map_info->player_x] = '0';
 	map_info->player_x = map_info->player_x - 1;
@@ -83,10 +86,11 @@ void	move_right(t_map *map_info)
 		map_info->c_count += 1;
 	if (map_info->map_array[map_info->player_y][map_info->player_x + 1] == 'E')
 	{
-		map_info->exit_y = map_info->player_y;
-		map_info->exit_x = map_info->player_x + 1;
 		if (map_info->c_count == map_info->coins)
+		{
+			free_map (map_info);
 			exit(0);
+		}
 	}
 	map_info->map_array[map_info->player_y][map_info->player_x] = '0';
 	map_info->player_x = map_info->player_x + 1;

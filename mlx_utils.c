@@ -6,7 +6,7 @@
 /*   By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 14:58:15 by tmontani          #+#    #+#             */
-/*   Updated: 2024/07/17 15:46:06 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/07/18 14:27:17 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,15 @@ void	put_background(t_map *map_info)
 		while (x < map_info->len_x)
 		{
 			if (map_info->map_array[y][x] == '1')
+			{
 				mlx_put_image_to_window(map_info->mlx, map_info->window,
 					map_info->wall_img, x * 32, y * 32);
+			}
 			else
+			{
 				mlx_put_image_to_window(map_info->mlx, map_info->window,
 					map_info->ground_img, x * 32, y * 32);
+			}
 			x++;
 		}
 		y++;
@@ -90,7 +94,7 @@ int	close_handler(t_map *map_info)
 	if (map_info->window && map_info->mlx)
 	{
 		mlx_destroy_window(map_info->mlx, map_info->window);
-		free(map_info->map_array);
+		free_map(map_info);
 		exit(0);
 	}
 	return (0);

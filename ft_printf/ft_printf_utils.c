@@ -6,7 +6,7 @@
 /*   By: tmontani <tmontani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:59:48 by tmontani          #+#    #+#             */
-/*   Updated: 2023/12/04 20:11:06 by tmontani         ###   ########.fr       */
+/*   Updated: 2024/07/17 16:30:58 by tmontani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_putstr_nreverse(char *str)
 	int	j;
 
 	j = 0;
-	i = ft_strlen(str) - 1;
+	i = ft_strlen2(str) - 1;
 	while (i >= 0)
 	{
 		j += write(1, &str[i], 1);
